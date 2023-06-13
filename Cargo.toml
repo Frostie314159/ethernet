@@ -1,0 +1,28 @@
+[package]
+name = "ethernet"
+version = "0.1.0"
+edition = "2021"
+description = "A parser for ethernet headers."
+authors = ["Frostie314159"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/Frostie314159/ethernet"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bin-utils = { version = "0.1.0", default-features = false }
+ether-type = { version = "0.1.0", default-features = false }
+mac-parser = { version = "0.1.0", default-features = false }
+
+[features]
+debug = ["mac-parser/debug", "ether-type/debug"]
+default = ["debug"]
+
+[dev-dependencies]
+criterion = "0.5.1"
+
+[[bench]]
+name = "ethernet"
+harness = false
