@@ -7,9 +7,9 @@ extern crate alloc;
 
 #[cfg(feature = "alloc")]
 use alloc::vec::Vec;
+use ether_type::EtherType;
 use mac_parser::*;
 
-use ether_type::*;
 use scroll::{
     ctx::{MeasureWith, SizeWith, TryFromCtx, TryIntoCtx},
     Endian, Pread, Pwrite,
