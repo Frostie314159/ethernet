@@ -1,6 +1,4 @@
 #![no_std]
-#![feature(more_qualified_paths)]
-#![feature(iter_next_chunk)]
 
 #[cfg(feature = "alloc")]
 extern crate alloc;
@@ -101,7 +99,7 @@ impl TryFromCtx<'_> for Ethernet2Header {
 
         let dst = from.gread(&mut offset)?;
         let src = from.gread(&mut offset)?;
-        let ether_type = EtherType::from_representation(from.gread_with(&mut offset, Endian::Big)?);
+        let ether_type = EtherType::from_bits(from.gread_with(&mut offset, Endian::Big)?);
 
         Ok((
             Self {
@@ -121,7 +119,7 @@ impl TryIntoCtx for Ethernet2Header {
         buf.gwrite(self.dst, &mut offset)?;
         buf.gwrite(self.src, &mut offset)?;
         buf.gwrite_with(
-            self.ether_type.to_representation(),
+            self.ether_type.into_bits(),
             &mut offset,
             Endian::Big,
         )?;
