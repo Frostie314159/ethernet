@@ -22,4 +22,4 @@ harness = false
 [dependencies]
 ether-type = "0.1.3"
 mac-parser = "0.1.4"
-scroll = "0.12.0"
+scroll = { version = "0.12.0", default-features = false }
